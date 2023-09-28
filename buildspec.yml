@@ -10,8 +10,11 @@ phases:
       - npm install             # Install project dependencies
   build:
     commands:
-      # Synthesize CDK app and deploy EC2InstanceStack
+      # Deploy the EC2InstanceStack
       - cdk deploy EC2InstanceStack --require-approval never
+
+      # Deploy the InstanceControlFunction stack (if separate)
+      - cdk deploy InstanceControlStack --require-approval never
 
 artifacts:
   files: '**/*'  # Specify the files and directories to include in the build artifact
