@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14  # Adjust the Node.js version as needed
+  pre_build:
+    commands:
+      - npm install -g aws-cdk   # Install AWS CDK globally (if not already installed)
+      - npm install             # Install project dependencies
+  build:
+    commands:
+      # Synthesize CDK app and deploy EC2InstanceStack
+      - cdk deploy EC2InstanceStack --require-approval never
+
+artifacts:
+  files: '**/*'  # Specify the files and directories to include in the build artifact
+  discard-paths: yes
