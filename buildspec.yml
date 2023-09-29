@@ -3,7 +3,7 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14  # Adjust the Node.js version as needed
+      nodejs: 18  # Adjust the Node.js version as needed
   pre_build:
     commands:
       - npm install -g aws-cdk   # Install AWS CDK globally (if not already installed)
