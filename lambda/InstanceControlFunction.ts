@@ -9,8 +9,12 @@ export async function handler(event: any): Promise<void> {
     const describeInstancesParams: AWS.EC2.DescribeInstancesRequest = {
       Filters: [
         {
-          Name: 'tag:MyGroupTagKey', // Use the same tag key as suggested
-          Values: ['MyGroupTagValue'], // Use the same tag value as suggested
+          Name: 'tag:Environment', // Modify this to match the key you used
+          Values: ['Production'], // Modify this to match the value you used
+        },
+        {
+          Name: 'tag:EC2TagGroup', // Modify this to match the key you used
+          Values: ['CloudGroup'], // Modify this to match the value you used
         },
       ],
     };

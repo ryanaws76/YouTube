@@ -1,4 +1,4 @@
-import { App, Stack, StackProps, Duration, Tag } from 'aws-cdk-lib';
+import { App, Stack, StackProps, Duration, Tags } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as iam from 'aws-cdk-lib/aws-iam';
@@ -33,7 +33,7 @@ export class Ec2InstanceStack extends Stack {
 
     // Create 5 EC2 instances with the same tag to group them
     for (let i = 0; i < 5; i++) {
-      new ec2.Instance(this, `EC2Instance${i}`, {
+      const ec2Instance = new ec2.Instance(this, `EC2Instance${i}`, {
         instanceType: ec2.InstanceType.of(ec2.InstanceClass.T2, ec2.InstanceSize.MICRO),
         machineImage: ec2.MachineImage.fromSsmParameter('/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2'),
         vpc: vpc,
@@ -41,8 +41,11 @@ export class Ec2InstanceStack extends Stack {
         userData: ec2.UserData.custom('Your user data script here'),
         tags: {
             MyGroupTagKey: 'MyGroupTagValue', // Use the same tag key and value for all instances
-        } as any,
+        },
       });
+      // Add regular AWS tags to the instances
+      Tags.of(ec2Instance).add('Environment', 'Production');
+      Tags.of(ec2Instance).add('EC2TagGroup', 'CloudGroup');
     }
 
     // Grant Lambda permissions to describe and terminate instances
