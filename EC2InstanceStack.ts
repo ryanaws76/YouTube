@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as events from 'aws-cdk-lib/aws-events';
 
 export class Ec2InstanceStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -54,8 +55,8 @@ export class Ec2InstanceStack extends Stack {
     );
 
     // Create a CloudWatch Events rule to trigger the Lambda function periodically
-    const rule = new lambda.EventRule(this, 'InstanceControlRule', {
-      schedule: lambda.Schedule.rate(Duration.minutes(1)), // Run every 1 minute
+    const rule = new events.EventRule(this, 'InstanceControlRule', {
+      schedule: events.Schedule.rate(Duration.minutes(1)), // Run every 1 minute
     });
     rule.addTarget(lambdaFunction);
   }
