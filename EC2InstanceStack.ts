@@ -39,9 +39,6 @@ export class Ec2InstanceStack extends Stack {
         vpc: vpc,
         role: instanceRole,
         userData: ec2.UserData.custom('Your user data script here'),
-        tags: {
-            MyGroupTagKey: 'MyGroupTagValue', // Use the same tag key and value for all instances
-        },
       });
       // Set tags for each EC2 instance
       ec2Instance.node.applyAspect(new Tag('MyGroupTagKey', 'MyGroupTagValue'));
