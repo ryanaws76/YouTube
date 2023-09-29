@@ -55,7 +55,7 @@ export class Ec2InstanceStack extends Stack {
     );
 
     // Create a CloudWatch Events rule to trigger the Lambda function periodically
-    const rule = new events.EventRule(this, 'InstanceControlRule', {
+    const rule = new events.Rule(this, 'InstanceControlRule', {
       schedule: events.Schedule.rate(Duration.minutes(1)), // Run every 1 minute
     });
     rule.addTarget(lambdaFunction);
