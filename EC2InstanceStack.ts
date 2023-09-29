@@ -1,10 +1,11 @@
-import * as cdk from 'aws-cdk-lib';
+import { App, Stack, StackProps, Duration } from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 
-export class Ec2InstanceStack extends cdk.Stack {
-  constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
+export class Ec2InstanceStack extends Stack {
+  constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
 
     // Create a VPC
@@ -54,11 +55,11 @@ export class Ec2InstanceStack extends cdk.Stack {
 
     // Create a CloudWatch Events rule to trigger the Lambda function periodically
     const rule = new lambda.EventRule(this, 'InstanceControlRule', {
-      schedule: lambda.Schedule.rate(cdk.Duration.minutes(1)), // Run every 1 minute
+      schedule: lambda.Schedule.rate(Duration.minutes(1)), // Run every 1 minute
     });
     rule.addTarget(lambdaFunction);
   }
 }
 
-const app = new cdk.App();
+const app = new App();
 new Ec2InstanceStack(app, 'Ec2InstanceStack');
