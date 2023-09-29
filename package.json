@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Mashup of AWS CDK, SDK, ChatGPT, EC2, VPC",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "cdk": "cdk",
+    "deploy": "cdk deploy"
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,18 @@
   ],
   "author": "Ryan McLaughlin",
   "license": "ISC",
+  "dependencies": {
+    "aws-cdk-lib": "^1.137.0",
+    "@aws-cdk/core": "^1.137.0",
+    "@aws-cdk/aws-ec2": "^1.137.0",
+    "@aws-cdk/aws-lambda": "^1.137.0",
+    "aws-sdk": "^2.1055.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.72",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.5.4"
+  },
   "bugs": {
     "url": "https://github.com/ryanaws76/YouTube/issues"
   },
