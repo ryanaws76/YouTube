@@ -1,4 +1,5 @@
 {
+    "app": "EC2InstanceStack.ts",
     "context": {
       "@aws-cdk/core:newStyleStackSynthesis": true,
       "aws-cdk:enableDiffNoFail": "true",
