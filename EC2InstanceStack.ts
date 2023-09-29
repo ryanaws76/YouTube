@@ -39,9 +39,6 @@ export class Ec2InstanceStack extends Stack {
         vpc: vpc,
         role: instanceRole,
         userData: ec2.UserData.custom('Your user data script here'),
-        tags: {
-            MyGroupTagKey: 'MyGroupTagValue', // Use the same tag key and value for all instances
-        },
       });
       // Add regular AWS tags to the instances
       Tags.of(ec2Instance).add('Environment', 'Production');
