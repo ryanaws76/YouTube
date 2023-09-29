@@ -1,0 +1,28 @@
+{
+  "name": "youtube-views",
+  "version": "1.0.0",
+  "description": "Mashup of AWS CDK, SDK, ChatGPT, EC2, VPC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ryanaws76/YouTube.git"
+  },
+  "keywords": [
+    "AWS",
+    "CDK",
+    "AWS",
+    "SDK",
+    "ChatGPT",
+    "YouTube",
+    "Views"
+  ],
+  "author": "Ryan McLaughlin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanaws76/YouTube/issues"
+  },
+  "homepage": "https://github.com/ryanaws76/YouTube#readme"
+}
