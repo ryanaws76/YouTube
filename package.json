@@ -4,9 +4,7 @@
   "description": "Mashup of AWS CDK, SDK, ChatGPT, EC2, VPC",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cdk deploy",
-    "cdk": "cdk",
-    "deploy": "cdk deploy"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
