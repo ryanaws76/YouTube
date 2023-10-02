@@ -58,7 +58,7 @@ export class Ec2InstanceStack extends Stack {
     const rule = new events.Rule(this, 'InstanceControlRule', {
       schedule: events.Schedule.rate(Duration.minutes(1)), // Run every 1 minute
     });
-    rule.addTarget(lambdaFunction);
+    rule.bind(lambdaFunction);
   }
 }
 
